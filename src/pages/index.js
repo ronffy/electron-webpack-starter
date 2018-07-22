@@ -1,5 +1,6 @@
 import { remote } from 'electron';
 import path from 'path';
+import './index.css';
 
 const a = 4;
 class C {
@@ -9,7 +10,7 @@ class C {
   }
 }
 
-document.getElementById('root').innerHTML = `<button style="color: red">go login</button>`;
+document.getElementById('root').innerHTML = `<button class="main">go login</button>`;
 document.getElementById('root').onclick = () => {
   const loginPath = path.join('file://', remote.app.getAppPath(), 'dist/login.html');
   let win = new remote.BrowserWindow({
