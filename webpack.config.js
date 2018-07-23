@@ -1,9 +1,8 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-// 提取css文件
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   target: 'electron-renderer',
   entry: {
     index: './src/pages/index',
@@ -31,10 +30,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // use: ['style-loader', 'css-loader?minimize', 'postcss-loader']
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader'],
-        })
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
       }
     ]
   },
@@ -50,9 +47,6 @@ module.exports = {
       filename: 'login.html',
       template: './src/entry.ejs',
       excludeChunks: ['index']
-    }),
-    new ExtractTextPlugin({
-      filename: `[name]_[contenthash:8].css`,// 给输出的 CSS 文件名称加上 Hash 值
     }),
   ]
 }

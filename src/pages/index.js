@@ -2,14 +2,6 @@ import { remote } from 'electron';
 import path from 'path';
 import './index.css';
 
-const a = 4;
-class C {
-  a = 3;
-  f() {
-    console.log('index');
-  }
-}
-
 document.getElementById('root').innerHTML = `<button class="main">go login</button>`;
 document.getElementById('root').onclick = () => {
   const loginPath = path.join('file://', remote.app.getAppPath(), 'dist/login.html');
